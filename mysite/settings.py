@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w(w)8ehi^cr-elk_s36ot=ozpvupl92sv*v9arnx6dpc=2u%wi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aswangreen5.pythonanywhere.com']
+ALLOWED_HOSTS = ['aswangreen5.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',
+    'simple_pagination',
+    'bootstrap4',
+    'crispy_forms',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -49,12 +55,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+
 ROOT_URLCONF = 'mysite.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Cairo'
 
 USE_I18N = True
 
@@ -123,8 +132,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # default static files settings for PythonAnywhere.
+offlineLocalPath = "/aswangreen5/mysite"
+onlineLocalPath = "/mysite"
+
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = '/home/aswangreen5/mysite/media'
+MEDIA_ROOT = offlineLocalPath + '/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/aswangreen5/mysite/static'
+STATIC_ROOT = offlineLocalPath + '/static'
 STATIC_URL = '/static/'
