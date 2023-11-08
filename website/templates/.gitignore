@@ -1,0 +1,6 @@
+*.scss
+*.map
+*.prepros
+**/.vscode
+base.css
+components.css

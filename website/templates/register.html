@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="تواصل مع خدمة عملاء اسوان جرين" />
+    <title>اسوان جرين - تواصل معنا</title>
+
+    <link rel="stylesheet" href="./static/stylesheets/index.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="index.html">
+        <img
+          class="navbar__logo"
+          src="./static/assets/images/logo.webp"
+          alt="logo"
+        />
+      </a>
+      <button class="nav-toggler">
+        <svg
+          class="nav-toggler__icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+      </button>
+      <nav class="navbar__nav">
+        <button class="nav__close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </button>
+        <section class="nav__body">
+          <a class="navbar__link" href="./index.html">الرئيسية</a>
+          <a class="navbar__link" href="./our-services.html">خدماتنا</a>
+          <a class="navbar__link" href="./about-us.html">من نحن؟</a>
+          <a class="navbar__link active" href="./contact-us.html">تواصل معنا</a>
+          <a class="btn btn--blue" href="./login">تسجيل الدخول</a>
+        </section>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section section--grey section--first">
+        <form class="form form--step1">
+          <img
+            class="form__img"
+            src="./static/assets/images/logo.webp"
+            alt="لوجو اسوان جرين"
+          />
+
+          <div class="form__group">
+            <label class="form__label">الاسم ثلاثي</label>
+            <input name="name" type="text" required />
+            <span class="form__validation-msg">الاسم يجب ان يكون ثلاثي</span>
+          </div>
+          <div class="form__group">
+            <label class="form__label">الرقم الهاتف</label>
+            <input name="phone" type="number" required />
+            <span class="form__validation-msg"
+              >رقم الهاتف يجب ان يبدأ ب 01 ويتكون من 11 رقم</span
+            >
+          </div>
+          <div class="form__group">
+            <label class="form__label">الرقم القومي</label>
+            <input name="nationalId" type="number" required />
+            <span class="form__validation-msg"
+              >الرقم القومي يجب ان يكون 14 رقم</span
+            >
+          </div>
+          <div class="form__group">
+            <label class="form__label">كلمة المرور</label>
+            <input name="password" type="password" required />
+            <span class="form__validation-msg"
+              >كلمة المرور يجب الا تقل عن 8 احرف و ارقام</span
+            >
+          </div>
+          <button class="btn btn--green" type="submit">التالي</button>
+        </form>
+        <form class="form form--step2 hidden">
+          <img
+            class="form__img"
+            src="./static/assets/images/logo.webp"
+            alt="لوجو اسوان جرين"
+          />
+
+          <div class="form__group">
+            <select name="area" class="select--region">
+              <option value="0" selected hidden disabled>
+                اختر المنطقة...
+              </option>
+            </select>
+            <span class="form__validation-msg">هذا الحقل مطلوب</span>
+          </div>
+          <div class="form__group">
+            <label class="form__label">اسم الشارع</label>
+            <input name="streetName" type="text" />
+            <span class="form__validation-msg">هذا الحقل مطلوب</span>
+          </div>
+          <section class="form__group--inline">
+            <div class="form__group">
+              <label class="form__label">رقم العمارة/المبني</label>
+              <input name="buildingNumber" type="text" />
+              <span class="form__validation-msg">هذا الحقل مطلوب</span>
+            </div>
+            <div class="form__group">
+              <label class="form__label">رقم الشقة</label>
+              <input name="apartmentNumber" type="number" />
+              <span class="form__validation-msg">هذا الحقل مطلوب</span>
+            </div>
+          </section>
+          <div class="form__group">
+            <label class="form__label">العنوان بالتفصيل</label>
+            <textarea
+              name="addressDetails"
+              type="text"
+              rows="5"
+              required
+            ></textarea>
+            <span class="form__validation-msg">هذا الحقل مطلوب</span>
+          </div>
+          <section class="form-actions form__group--inline">
+            <button class="btn btn--green" type="submit">تسجيل</button>
+            <!-- <button class="btn btn--secondary form__btn--prev" type="button">
+              السابق
+            </button> -->
+          </section>
+        </form>
+
+        <section class="success-message hidden">
+          <i>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="65px"
+              fill="#00b894"
+            >
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"
+              />
+            </svg>
+          </i>
+          <p class="mt-2">تم التسجيل بنجاح سنقوم بالتواصل معك في اقرب وقت</p>
+          <a class="link mt-2" href="./index.html">العودة للرئيسية</a>
+        </section>
+      </section>
+    </main>
+
+    <script defer src="./static/scripts/global.js"></script>
+    <script defer src="./static/scripts/register.js"></script>
+  </body>
+</html>

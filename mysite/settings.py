@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'crispy_forms',
     'import_export',
+    'cAccounts',
+    'website',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,6 @@ MEDIA_ROOT = offlineLocalPath + '/media'
 MEDIA_URL = '/media/'
 STATIC_ROOT = offlineLocalPath + '/static'
 STATIC_URL = '/static/'
+
+
+LOGIN_URL = '/cAccounts/login'

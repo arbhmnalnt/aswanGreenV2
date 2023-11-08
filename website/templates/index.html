@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="احدي مشروعات الجمعية المصرية للخدمات البيئية"
+    />
+    <title>اسوان جرين | الصفحة الرئيسية</title>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./static/assets/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./static/assets/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./static/assets/images/favicon-16x16.png"
+    />
+    <link
+      rel="stylesheet"
+      href="./static/stylesheets/vendors/splide-core.min.css"
+    />
+    <link rel="stylesheet" href="./static/stylesheets/index.css" />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="./static/assets/images/hero-image-1.webp"
+      type="image/webp"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="index.html">
+        <img
+          class="navbar__logo"
+          src="./static/assets/images/logo.webp"
+          alt="logo"
+        />
+      </a>
+      <button class="nav-toggler" aria-label="navbar toggler">
+        <svg
+          class="nav-toggler__icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+        </svg>
+      </button>
+      <nav class="navbar__nav">
+        <button class="nav__close" aria-label="navbar close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 0 24 24"
+          >
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+            />
+          </svg>
+        </button>
+        <section class="nav__body">
+          <a class="navbar__link active" href="./index.html">الرئيسية</a>
+          <a class="navbar__link" href="./our-services.html">خدماتنا</a>
+          <a class="navbar__link" href="./about-us.html">من نحن؟</a>
+          <a class="navbar__link" href="./contact-us.html">تواصل معنا</a>
+          <a class="btn btn--blue" href="./cAccounts/login">تسجيل الدخول</a>
+        </section>
+      </nav>
+    </header>
+
+    <div class="preloader">
+      <img
+        class="preloader__img--first"
+        src="./static/assets/images/logo-2.webp"
+        alt="association logo"
+      />
+      <img
+        class="preloader__img mt-3"
+        src="./static/assets/images/logo--green.svg"
+        alt="لوجو اسوان جرين"
+      />
+      <span class="spinner"></span>
+    </div>
+
+    <main class="hero-carousel splide" aria-label="Splide Basic HTML Example">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <section class="hero-carousel__item">
+              <div class="overlay"></div>
+              <section class="hero-carousel__caption animate">
+                <img
+                  class="logo"
+                  src="./static/assets/images/logo.svg"
+                  alt="لوجو اسوان جرين"
+                />
+                <p>
+                  هدفنا حماية البيئة ومكافحة التلوث ومواجهة التغيرات المناخية
+                </p>
+                <a href="./our-services.html" class="btn btn--light-green"
+                  >اطلب خدمة</a
+                >
+              </section>
+            </section>
+          </li>
+          <li class="splide__slide">
+            <section
+              class="hero-carousel__item"
+              data-background="./static/assets/images/hero-image-2.webp"
+            >
+              <div class="overlay"></div>
+              <section class="hero-carousel__caption animate">
+                <img
+                  class="logo"
+                  data-src="./static/assets/images/logo.svg"
+                  alt="لوجو اسوان جرين"
+                />
+                <p>جمع المخلفات بطريقة امنة و اعادة تدويرها</p>
+                <a href="./our-services.html" class="btn btn--light-green"
+                  >اطلب خدمة</a
+                >
+              </section>
+            </section>
+          </li>
+          <li class="splide__slide">
+            <section
+              class="hero-carousel__item"
+              data-background="./static/assets/images/hero-image-3.webp"
+            >
+              <div class="overlay"></div>
+              <section class="hero-carousel__caption animate">
+                <img
+                  class="logo"
+                  data-src="./static/assets/images/logo.svg"
+                  alt="لوجو اسوان جرين"
+                />
+                <p>حملات التشجير و النظافة العامة للشوارع في المحافظة</p>
+                <a href="./our-services.html" class="btn btn--light-green"
+                  >اطلب خدمة</a
+                >
+              </section>
+            </section>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <section class="section section--grey company-owner animate">
+      <span>احدي مشروعات</span>
+      <a class="association" href="https://www.es4id.com/">
+        <img
+          class="association-logo"
+          src="./static/assets/images/association-logo.png"
+          alt="لوجو الجمعية المصرية للتنمية المتكاملة"
+        />
+        <h2 class="association-link">الجمعية المصرية للتنمية المتكاملة</h2>
+      </a>
+    </section>
+
+    <section class="section">
+      <div class="container section__grid align-start animate">
+        <section class="about-us__text">
+          <h3 class="section-title">من نحن؟</h3>
+          <p class="paragraph-section">
+            اسوان جرين هو احد مشروعات الجمعية المصرية للتنمية المتكاملة يهدف الي
+            المحافظة علي البيئة و جمع المخلفات بطريقة امنة و اعادة تدويرها ويقوم
+            المشروع بتوفير العديد من فرص العمل لشباب اسوان, كما ان المشروع يخدم
+            التحول الرقمي و هي احدي المحاور التي اشارت اليها القيادة السياسية
+            حيث يتم عمل كود استجابة سريعة (QR code) لكل عميل...
+          </p>
+
+          <a class="btn--link btn-underlined--blue" href="./about-us.html"
+            >اقرا المزيد</a
+          >
+        </section>
+        <img
+          class="about-us__img"
+          data-src="./static/assets/images/about-us.webp"
+          alt="صورة لعمال اسوان جرين"
+        />
+      </div>
+    </section>
+
+    <section class="section section--grey">
+      <div class="container text-center">
+        <section>
+          <h3 class="section-title">خدماتنا</h3>
+          <p>نقوم بتقديم مجموعة واسعة من الخدمات</p>
+        </section>
+        <section class="our-services mt-3">
+          <div class="card animate">
+            <div class="card__img-holder">
+              <img
+                class="card__img"
+                data-src="./static/assets/images/cleaning-services.webp"
+                alt="خدمات النظافة"
+              />
+              <span class="card__img-caption">خدمات النظافة</span>
+            </div>
+            <section class="card__body">
+              <p class="card__text">
+                و تشمل (النظافة الداخلية - نظافة السلم - تنظيف السجاد و
+                المفروشات)
+              </p>
+              <a class="btn--sm btn--blue" href="./our-services.html"
+                >اطلب خدمة</a
+              >
+            </section>
+          </div>
+          <div class="card animate">
+            <div class="card__img-holder">
+              <img
+                class="card__img"
+                data-src="./static/assets/images/house-collecting-service.webp"
+                alt="خدمات النظافة"
+              />
+              <span class="card__img-caption">خدمة الجمع المنزلي</span>
+            </div>
+            <section class="card__body">
+              <p class="card__text">خدمة الجمع المنزلي للمنازل</p>
+              <a class="btn--sm btn--blue" href="./our-services.html"
+                >اطلب خدمة</a
+              >
+            </section>
+          </div>
+          <div class="card animate">
+            <div class="card__img-holder">
+              <img
+                class="card__img"
+                data-src="./static/assets/images/disinfecting-services.webp"
+                alt="خدمات التعقيم و مكافحة الحشرات"
+              />
+              <span class="card__img-caption"
+                >خدمات التعقيم و مكافحة الحشرات</span
+              >
+            </div>
+            <section class="card__body">
+              <p class="card__text">
+                خدمات الرش و التعقيم و مكافحة الحشرات و الفيروسات.
+              </p>
+              <a class="btn--sm btn--blue" href="./our-services.html"
+                >اطلب خدمة</a
+              >
+            </section>
+          </div>
+          <div class="card animate">
+            <div class="card__img-holder">
+              <img
+                class="card__img"
+                data-src="./static/assets/images/maintenance-services.webp"
+                alt="خدمات الصيانة"
+              />
+              <span class="card__img-caption">خدمات الصيانة</span>
+            </div>
+            <section class="card__body">
+              <p class="card__text">
+                تشمل خدمات الصيانة (السباكة - النجارة - النقاشة - الحدادة)
+              </p>
+              <a class="btn--sm btn--blue" href="./our-services.html"
+                >اطلب خدمة</a
+              >
+            </section>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container section__grid align-start animate">
+        <img
+          class="our-vision__image"
+          data-src="./static/assets/images/our-vision.webp"
+          alt="رؤيتنا"
+        />
+        <section class="our-vision__text">
+          <h3 class="section-title">رؤيتنا</h3>
+          <p class="paragraph-section">
+            تقديم بيئة نظيفة وتوفير العديد من فرص العمل لشباب اسوان و تقديم حل
+            جذري لمشكلة تراكم المخلفات و مكافحة التلوث البيئي و اعادة تدوير
+            المخلفات بطريقة امنة.
+          </p>
+        </section>
+      </div>
+    </section>
+
+    <section class="section stats-section">
+      <div class="container stats__body">
+        <section class="stats-info">
+          <h4 class="stats__number c-blue" data-value="1600">0</h4>
+          <span>عدد العملاء</span>
+        </section>
+        <section class="stats-info">
+          <h4 class="stats__number c-light-green" data-value="16">0</h4>
+          <span>منطقة تم تغطيتها</span>
+        </section>
+        <section class="stats-info">
+          <h4 class="stats__number c-purple" data-value="34000">0</h4>
+          <span>خدمة تم تقديمها</span>
+        </section>
+      </div>
+    </section>
+
+    <section class="section our-activities animate">
+      <div class="container text-center">
+        <section>
+          <h3 class="section-title">انشطتنا</h3>
+          <p>نقوم بعمل العديد من الندوات و حملات التوعية</p>
+        </section>
+        <section
+          class="our-activities__slider splide mt-3"
+          aria-label="Splide Basic HTML Example"
+        >
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <section class="our-activities__item">
+                  <div class="overlay"></div>
+                  <img
+                    data-src="./static/assets/images/activity-1.webp"
+                    alt="صورة من الندوة"
+                  />
+                  <p class="our-activities__caption">ندوات</p>
+                </section>
+              </li>
+
+              <li class="splide__slide">
+                <section class="our-activities__item">
+                  <div class="overlay"></div>
+                  <img
+                    data-src="./static/assets/images/activity-2.webp"
+                    alt="حملات التوعية"
+                  />
+                  <p class="our-activities__caption">حملات التوعية</p>
+                </section>
+              </li>
+              <li class="splide__slide">
+                <section class="our-activities__item">
+                  <div class="overlay"></div>
+                  <img
+                    data-src="./static/assets/images/activity-3.webp"
+                    alt="حملات الرش و التعقيم"
+                  />
+                  <p class="our-activities__caption">حملات الرش و التعقيم</p>
+                </section>
+              </li>
+              <li class="splide__slide">
+                <section class="our-activities__item">
+                  <div class="overlay"></div>
+                  <img
+                    data-src="./static/assets/images/activity-4.webp"
+                    alt="صورة لعمال اسوان جرين"
+                  />
+                  <p class="our-activities__caption">حملات التشجير</p>
+                </section>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section section--grey">
+      <div class="container text-center">
+        <section>
+          <h3 class="section-title">اخبارنا</h3>
+          <p>كن دائما معنا</p>
+        </section>
+        <section class="our-news">
+          <section class="our-news__item animate">
+            <img
+              class="our-news__img"
+              data-src="./static/assets/images/news-1.webp"
+              alt="تنظيف و تعقيم دور العبادة"
+            />
+            <section class="our-news__body">
+              <h4 class="our-news__title">تنظيف و تعقيم المسجد الجامع</h4>
+              <p class="our-news__text">
+                ولان اسوان جرين لها التزام امام المجتمع ولان الدين يدخل في تركيب
+                اساسيات الشخصيه المصريه فقد كان لزاما على اسوان جرين المساهمه في
+                تنظيف والتنظيم الداخلي لدور العباده فعلى سبيل المثال قد قامت
+                اسوان جرين بتنظيف العديد من الجوامع بالمجتمع الاسواني من باب
+                المسؤوليه المجتمعيه وحرصا على الدور الفعال للجمعيه ومساهمه منها
+                لرد الفضل للمجتمع الذي يساهم في عمل اسوان جرين بافضل صوره ممكنه
+              </p>
+            </section>
+          </section>
+          <section class="our-news__item animate">
+            <img
+              class="our-news__img"
+              data-src="./static/assets/images/news-2.webp"
+              alt=""
+            />
+            <section class="our-news__body">
+              <h4 class="our-news__title">تنظيف و تعقيم الكنيسة الأرثوذكسية</h4>
+              <p class="our-news__text">
+                الاقباط هم جزء مهم جدا في المجتمع الاسواني بشكل خاص والمجتمع
+                المصري بشكل عام ولهم حق علينا في الاهتمام بدور عبادتهم لذلك قامت
+                الجمعيه على سبيل المثال ليس الحصر بعمل تنظيف و تعقيم للكنيسه
+                الارثوذكسيه باسوان
+              </p>
+            </section>
+          </section>
+          <section class="our-news__item animate">
+            <img
+              class="our-news__img"
+              data-src="./static/assets/images/news-3.webp"
+              alt="تشجير طريق السادات"
+            />
+            <section class="our-news__body">
+              <h4 class="our-news__title">تنظيف و تشجير طريق السادات</h4>
+              <p class="our-news__text">
+                العمل لا يتوقف في مشروع أسوان جرين من خلال الجمعية المصرية
+                للتنمية المتكاملة مشروع أسوان جرين يستهدف تنفيذ أعمال النظافة
+                العامة في محافظة أسوان بطريق السادات والمناطق السكنية المطلة
+                عليه كمرحلة أولى وذلك من خلال الجمعية المصرية للتنمية المتكاملة
+                بالتعاون مع المحافظة.
+              </p>
+            </section>
+          </section>
+
+          <section class="our-news__item animate">
+            <img
+              class="our-news__img"
+              data-src="./static/assets/images/news-4.webp"
+              alt=""
+            />
+            <section class="our-news__body">
+              <h4 class="our-news__title">
+                بدء مشروع "أسوان جرين" من خلال الجمعية المصرية للتنمية المتكاملة
+              </h4>
+              <p class="our-news__text">
+                أعطى أشرف عطية محافظ أسوان اليوم الأربعاء، إشارة البدء لإطلاق
+                مشروع أسوان جرين التجريبى الذى يستهدف تنفيذ أعمال النظافة العامة
+                بطريق السادات والمناطق السكنية المطلة عليه كمرحلة أولى وذلك من
+                خلال الجمعية المصرية للتنمية المتكاملة بالتعاون مع المحافظة
+              </p>
+            </section>
+          </section>
+        </section>
+      </div>
+    </section>
+
+    <footer class="section footer">
+      <div class="footer__section container">
+        <section class="footer__column text-center footer__logo animate">
+          <div>
+            <img
+              class="logo"
+              src="./static/assets/images/logo.svg"
+              alt="لوجو الموقع"
+            />
+          </div>
+          <p>احدي مشروعات</p>
+          <a class="association" href="https://www.es4id.com/">
+            <img
+              class="association-logo--sm"
+              src="./static/assets/images/association-logo.png"
+              alt="association logo"
+            />
+            <h4 class="association-link footer__association-link">
+              الجمعية المصرية للتنمية المتكاملة
+            </h4>
+          </a>
+        </section>
+
+        <section class="footer__column footer__sitemap animate">
+          <h4 class="footer__title">روابط مهمة</h4>
+          <a class="sitemap__item" href="./index.html">الرئيسية</a>
+          <a class="sitemap__item" href="./about-us.html">من نحن؟</a>
+          <a class="sitemap__item" href="./contact-us.html">تواصل معنا</a>
+          <a class="sitemap__item" href="./register.html">اطلب خدمة</a>
+          <a class="sitemap__item" href="./login">تسجيل الدخول</a>
+        </section>
+
+        <section class="footer__column footer__contact-us animate">
+          <h4 class="footer__title">تواصل معنا</h4>
+
+          <p>66 طريق السادات امام الاكاديمية البحرية اعلي توكيل سيارات رينو</p>
+          <p>01156114447</p>
+          <p>01156114448</p>
+          <section class="flex gap-3">
+            <a href="https://web.facebook.com/es4id" aria-label="صفحة الفيسبوك"
+              ><img
+                class="footer__social-icon"
+                src="./static/assets/icons/facebook-f.svg"
+                alt="لينك صفحة الفيس"
+            /></a>
+          </section>
+        </section>
+      </div>
+    </footer>
+
+    <script defer type="module" src="./static/scripts/splide.min.js"></script>
+    <script defer type="module" src="./static/scripts/main.js"></script>
+    <script defer src="./static/scripts/global.js"></script>
+  </body>
+</html>
