@@ -42,10 +42,14 @@ INSTALLED_APPS = [
     'simple_pagination',
     'bootstrap4',
     'crispy_forms',
+    'crispy_bootstrap4',
     'import_export',
     'cAccounts',
     'website',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
