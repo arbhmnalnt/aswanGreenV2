@@ -20,7 +20,7 @@ from django.contrib.auth import authenticate, login as auth_login
 # from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # from django.urls import reverse_lazy
 from django.contrib.auth import logout as customLogout
-# from DataEntry.views import addTrack
+from track.views import addTrack
 # Create your views here.
 
 
@@ -33,14 +33,9 @@ def login(request):
     message = ''
     if request.method == 'POST':
         data2 = request.POST
-        # print(data2)
-        #data2 = json.loads(json.dumps(request.bo))
-
         username = data2.get('username')
-        # print(f"username => {username}")
         password = data2.get('password')
         user = authenticate(username=username,password=password)
-        # print(f"user => {user}")
         if user is not None:
             auth_login(request, user)
             first_name = request.user.first_name
@@ -64,7 +59,7 @@ def profile(request):
         depart = "تسجيل الدخول كمدخل بيانات"
         person = f"{user.first_name} {user.last_name}"
         details = "تم تسجيل الدخول"
-        # addTrack(depart, person, details)
+        addTrack(depart, person, details)
         request.session['group'] = "dataEntryAdmin"
         return redirect('/DataEntry/')
 
@@ -72,15 +67,15 @@ def profile(request):
         depart = "تسجيل الدخول كمطور"
         person = f"{user.first_name} {user.last_name}"
         details = "تم تسجيل الدخول"
-        # addTrack(depart, person, details)
+        addTrack(depart, person, details)
         request.session['group'] = "allAdmin"
-        return redirect('/DataEntry/')
+        return redirect('/track/TrackListView')
 
     elif user.groups.filter(name="tahsealAdmin"):
         depart = "تسجيل الدخول كمسوؤل تحصيل"
         person = f"{user.first_name} {user.last_name}"
         details = "تم تسجيل الدخول"
-        # addTrack(depart, person, details)
+        addTrack(depart, person, details)
         request.session['group'] = "tahsealAdmin"
         # print("admin here => ")
         return redirect('/DataEntry/TcurrentCollectOrder/')
@@ -89,7 +84,7 @@ def profile(request):
         depart = "تسجيل الدخول كمسئول خدمة عملاء"
         person = f"{user.first_name} {user.last_name}"
         details = "تم تسجيل الدخول"
-        # addTrack(depart, person, details)
+        addTrack(depart, person, details)
         request.session['group'] = "customerService"
         # print("admin here => ")
         return redirect('/cs/')

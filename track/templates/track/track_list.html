@@ -1,0 +1,57 @@
+{% extends "./index.html" %}
+{% block title %}
+    <title>سجل التتبع</title>
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <h1>سجل التتبع</h1>
+    <div class="row mt-5 mb-3">
+        <div class="col-10 m-auto border border-danger p-3 text-center">
+            <form class="form" action="#" method="GET">
+                <div class="">
+                    <input name="q" class="form-control m-2" placeholder="ابحث باسم العميل">
+                    <input type="submit" class="form-control btn btn-info" value="ابحث">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 m-auto">
+
+            <table class="table text-center table-striped w-100 table-hover table-bordered text-center" id="tblData" style="">
+                <thead>
+                    <th>م</th>
+                    <th>القسم</th>
+                    <th>الشخص</th>
+                    <th>التفاصيل</th>
+                    <th>التاريخ والوقت</th>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                        <tr>
+                            <td>{{record.id}}</td>
+                            <td>{{record.depart}}</td>
+                            <td>{{record.person}}</td>
+                            <td>{{record.details}}</td>
+                            <td>{{record.created_at}}</td>
+                        </tr>
+                    {% empty %}
+                        <li>No order found.</li>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}

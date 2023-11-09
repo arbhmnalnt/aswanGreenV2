@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'import_export',
     'cAccounts',
     'website',
+    'track',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
