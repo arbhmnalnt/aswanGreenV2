@@ -31,7 +31,7 @@ class FollowContractServicesAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     search_fields = ['pk','clientt__name', 'clientt__serial','clientt__place__name']
     list_display = ('clientt','get_contract_service_name','ecd', 'collcetStatus')
     def get_contract_service_name(self, obj):
-        return obj.contract.servicee.name if obj.contract else None
+        return obj.contractt.servicee.name if obj.contractt else None
 
 admin.site.register(FollowContractServices, FollowContractServicesAdmin)
 
