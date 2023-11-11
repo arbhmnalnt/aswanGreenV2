@@ -21,15 +21,33 @@ from django.contrib.auth import authenticate, login as auth_login
 # from django.urls import reverse_lazy
 from django.contrib.auth import logout as customLogout
 from track.views import addTrack
+from clientManager.models import Client, Contract, Service
 # Create your views here.
 
 
 def logout(request):
+    # for one time use
+    
     customLogout(request)
     return redirect ('/cAccounts/login')
 
 @csrf_exempt
 def login(request):
+    def makeContract():
+        clients = Client.objects.all()
+        serv = Service.objects.get(pk=7)
+        for client in clients:
+            print(f'client id => {client.id}')
+            # all contracts has service id = 7    40 price
+            
+            newContract =  Contract.objects.create(
+                clientt  = client ,
+                servicee = serv
+            )
+
+            newContract.save()
+    makeContract()
+    # 3333333333333333333333333333
     message = ''
     if request.method == 'POST':
         data2 = request.POST

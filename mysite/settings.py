@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'cAccounts',
     'website',
     'track',
+    'hr',
+    'clientManager',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -150,3 +152,5 @@ STATIC_URL = '/static/'
 
 
 LOGIN_URL = '/cAccounts/login'
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000 
