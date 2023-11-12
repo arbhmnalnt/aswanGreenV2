@@ -25,6 +25,7 @@ urlpatterns = [
     path('track/', include('track.urls')),
     path('hr/', include('hr.urls')),
     path('clientManager/', include('clientManager.urls')),
+    path('dataEntry/', include('dataEntry.urls')),
     
     
 ]

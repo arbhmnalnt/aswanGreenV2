@@ -49,7 +49,10 @@ INSTALLED_APPS = [
     'track',
     'hr',
     'clientManager',
+    'dataEntry',
 ]
+
+SIMPLE_PAGINATION_PER_PAGE = 100
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

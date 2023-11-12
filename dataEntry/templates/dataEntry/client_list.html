@@ -1,0 +1,37 @@
+{% extends "DataEntry/index.html" %}
+{% load paginate %}
+{% block title %}
+<title>سجل العملاء</title>
+{% endblock %}
+{% block style %}
+{% endblock %}
+{% block content %}
+<div class="content-container pt-2" style="background-color:#F3F5F2">
+    <div class="row">
+        <div class="col-10 m-auto">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>First name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% paginate clients %}
+            
+                    {% for client in clients %}
+                    <tr>
+                        <td>{{ client.id }}</td>
+                        <td>{{ client.name }}</td>
+                        <td>{{ client.place.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+            <div class="bg-dark text-danger">{% show_pageitems %}  </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

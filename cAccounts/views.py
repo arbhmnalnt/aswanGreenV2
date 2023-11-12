@@ -34,24 +34,24 @@ def logout(request):
 import datetime
 @csrf_exempt
 def login(request):
-    def makeContractFollow():
-        contracts = Contract.objects.all()
-        for con in contracts:
-            print(f'con => ${con.id}')
-            deserv = con.servicee.price
-            date_object = datetime.datetime.fromisoformat('2023-11-13')
-            datee = date_object.date()
+    # def makeContractFollow():
+    #     contracts = Contract.objects.all()
+    #     for con in contracts:
+    #         print(f'con => ${con.id}')
+    #         deserv = con.servicee.price
+    #         date_object = datetime.datetime.fromisoformat('2023-11-13')
+    #         datee = date_object.date()
 
-            newFollowContractServices =  FollowContractServices.objects.create(
-                clientt         = con.clientt ,
-                contractt       = con ,
-                ecd             = datee ,
-                deservedAmount  = deserv
+    #         newFollowContractServices =  FollowContractServices.objects.create(
+    #             clientt         = con.clientt ,
+    #             contractt       = con ,
+    #             ecd             = datee ,
+    #             deservedAmount  = deserv
 
-            )
+    #         )
 
-            newFollowContractServices.save()
-    makeContractFollow()
+    #         newFollowContractServices.save()
+    # makeContractFollow()
     # 3333333333333333333333333333
     message = ''
     if request.method == 'POST':
