@@ -20,8 +20,8 @@ class Service(models.Model):
     
 class Client(TimeStampMixin,models.Model):
     serial      = models.IntegerField(null=True, blank=True, unique=True, db_index=True, verbose_name="الرقم التعريفى")
-    name        = models.CharField(max_length=100,null=True, blank=True, db_index=True)
-    phone       = models.CharField(max_length=100, null=True, blank=True, db_index=True)
+    name        = models.CharField(max_length=100,null=True, blank=True, db_index=True, verbose_name="اسم العميل")
+    phone       = models.CharField(max_length=100, null=True, blank=True, db_index=True, verbose_name="رقم التليفون")
     place       = models.ForeignKey('Area', related_name='area', on_delete=models.CASCADE,null=True, blank=True)
     street      = models.CharField(max_length=150, null=True, blank=True)
     building    = models.CharField(max_length=150,null=True, blank=True, help_text="تفاصيل العمارة السكنية")

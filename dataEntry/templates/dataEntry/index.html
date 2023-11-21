@@ -48,54 +48,9 @@
 	            </div>
 	        </div>
 	    </div>
-	<!-- -- -->
     	<div class="row" style="height:89vh">
     	    <div class="col-2 pt-5 text-white" style="background-color:#30393D">
-                {% with user_group=request.session.group %}
-                {% if  user_group == "dataEntryAdmin"%}
-                <a href="/DataEntry/TmainPage?page=1" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">الصفحة الرئيسية</button>
-                </a>
-                <a href="/DataEntry/TnewContract2" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">ادخال تعاقد جديد</button>
-                </a>
-                <a href="/DataEntry/TCurrentContract/" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">التعاقدات الحالية</button>
-                </a>
-                <a href="/DataEntry/TnewCollectOrder" class="">
-                  <button class="btn btn-secondary w-100 m-2  btn-custom">انشاء طلب تحصيل</button>
-                </a>
-                <a href="/DataEntry/OSTT/" class="OSTT" >
-                    <!--  /DataEntry/OSTT  -->
-                    <button class="btn btn-secondary d-none w-100 m-2 btn-custom">تأكيد وحساب طلبات التحصيل      </button>
-                </a>
-                {% elif user_group == "tahsealAdmin"%}
-                <a href="/DataEntry/TcurrentCollectOrder" class="">
-                    <button class="btn btn-secondary w-100 m-2 text-right btn-custom">طلبات التحصيل الجارية</button>
-                </a>
-                {% elif  user_group == "allAdmin"%}
-                <a href="/DataEntry/TmainPage?page=1" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">الصفحة الرئيسية</button>
-                </a>
-                <a href="/DataEntry/TnewContract2" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">ادخال تعاقد جديد</button>
-                </a>
-                <a href="/DataEntry/TCurrentContract/" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">التعاقدات الحالية</button>
-                </a>
-                <a href="/DataEntry/TnewCollectOrder" class="">
-                  <button class="btn btn-secondary w-100 m-2  btn-custom">انشاء طلب تحصيل</button>
-                </a>
-                <a href="/DataEntry/OSTT/" class="OSTT" >
-                    <!--  /DataEntry/OSTT  -->
-                    <button class="btn btn-secondary d-none w-100 m-2 btn-custom">تأكيد وحساب طلبات التحصيل      </button>
-                </a>
-                <a href="/DataEntry/TrackListView" class="">
-                    <button class="btn btn-danger p-2 w-100 m-2 text-right btn-custom">سجل التتبع</button>
-                </a>
-                {% else %}
-                {% endif %}
-                {% endwith %}
+                
     	    </div>
     	    <div class="col-10">
                 {% block content %}{% endblock %}
@@ -104,8 +59,8 @@
 
 	</div>
 
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	  <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.js"></script>
 
 
