@@ -1,0 +1,19 @@
+{% extends "DataEntry/index.html" %}
+{% block title %}
+<title>اضافة / تعديل عميل</title>
+{% endblock %}
+{% block content %}
+  <h2>Edit Client</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <h3>Edit Contract</h3>
+    {{ contract_form.as_p }}
+
+    <h3>Edit Follow Contract Services</h3>
+    {{ follow_contract_form.as_p }}
+
+    <button type="submit">Save Changes</button>
+  </form>
+{% endblock %}

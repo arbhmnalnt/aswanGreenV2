@@ -10,8 +10,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-container pt-2" style="background-color:#F3F5F2">
+<div class="container-fluid">
+    <div class="row mt-5 mb-3">
+        <div class="col-10 m-auto border border-danger p-3 text-center">
+            <form class="form" action="#" method="GET">
+                <div class="">
+                    <input name="q" class="form-control m-2" placeholder="ابحث باسم العميل">
+                    <input type="submit" class="form-control btn btn-info" value="ابحث">
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="row">
+<<<<<<< HEAD
         <div class="col-10 m-auto">
             <form method="get">
                 <div class="input-group mb-3">
@@ -29,20 +40,41 @@
                         <th>الاسم</th>
                         <th>المنطقة</th>
                     </tr>
+=======
+        <div class="col-12 m-auto">
+            <h1>قائمة العملاء</h1>
+            <p class="h5">إجمالى العدد : <span class="d-inline-block h2"> {{total_count}}<span><p>
+            <table class="table text-center table-striped table-hover table-bordered w-100" id="" style="">
+                <thead>
+                    <th>رقم العميل</th>
+                    <th>الاسم</th>
+                    <th>العنوان</th>
+>>>>>>> 8d4afc32ad225297a59bc9021df14c4f2234dcd1
                 </thead>
                 <tbody>
                     {% for client in clients %}
-                    <tr>
-                        <td>{{ client.id }}</td>
-                        <td>{{ client.name }}</td>
-                        <td>{{ client.place.name }}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ client.serial }}</td>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.place.name }}</td>
+                        </tr>
+
+                    {% empty %}
+                        <li>No client found.</li>
                     {% endfor %}
                 </tbody>
             </table>
+<<<<<<< HEAD
         </div>
     </div>
 </div>
 {% endblock %}
 
 
+=======
+            <a class="btn btn-primary" href="#">اضافة عميل</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+>>>>>>> 8d4afc32ad225297a59bc9021df14c4f2234dcd1
