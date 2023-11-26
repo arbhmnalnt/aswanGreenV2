@@ -1,25 +1,36 @@
 {% extends "DataEntry/index.html" %}
-{% load paginate %}
+{% load static %}
+
 {% block title %}
-<title>سجل العملاء</title>
+    <title>سجل العملاء</title>
 {% endblock %}
+
 {% block style %}
+    <!-- Your styles go here -->
 {% endblock %}
+
 {% block content %}
 <div class="content-container pt-2" style="background-color:#F3F5F2">
     <div class="row">
         <div class="col-10 m-auto">
-            <table class="table table-bordered">
+            <form method="get">
+                <div class="input-group mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="ابحث بالاسم او السريال او المنطقة" aria-label="Recipient's Name" aria-describedby="button-addon2">
+                    <button class="btn btn-info" type="submit">ابحث</button>
+                </div>
+            </form>
+            <p class="bg-light p-1 m-1 h6">
+                عدد العملاء : <span class="d-inline-block text-primary">{{total_count}}</span>
+            </p>
+            <table class="table table-bordered table-sm text-center table-hover table-striped">
                 <thead>
                     <tr>
-                        <th>Username</th>
-                        <th>First name</th>
-                        <th>Email</th>
+                        <th>id</th>
+                        <th>الاسم</th>
+                        <th>المنطقة</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% paginate clients %}
-            
                     {% for client in clients %}
                     <tr>
                         <td>{{ client.id }}</td>
@@ -28,10 +39,10 @@
                     </tr>
                     {% endfor %}
                 </tbody>
-                
             </table>
-            <div class="bg-dark text-danger">{% show_pageitems %}  </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
+
