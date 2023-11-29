@@ -1,19 +1,30 @@
 {% extends "DataEntry/index.html" %}
+{% load crispy_forms_tags %}
+
 {% block title %}
-<title>اضافة / تعديل عميل</title>
+<title>اضافة / تعديل سجل عميل</title>
 {% endblock %}
 {% block content %}
-  <h2>Edit Client</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    
-    <h3>Edit Contract</h3>
-    {{ contract_form.as_p }}
-
-    <h3>Edit Follow Contract Services</h3>
-    {{ follow_contract_form.as_p }}
-
-    <button type="submit">Save Changes</button>
-  </form>
+	<div class"container text-center m-auto">
+		
+		<form method="post" class="p-3 m-3" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="border p-3 m-3">
+				<h2 class="border border-info p-3">بيانات العميل</h2>
+				{{ form|crispy }}
+				<hr>
+			</div>
+			<div class="border p-5 m-5">
+				<h2 class="border border-primary p-3">بيانات التعاقد</h2>
+				{{ contract_form|crispy }}
+				<hr>
+			</div>
+			<div class="border p-3 m-3">
+				<h2 class="border border-success p-3">بيانات متابعة التعاقد</h2>
+				{{ follow_contract_form|crispy }}
+				<hr>
+			</div>
+			<button type="submit" class="btn btn-danger w-100">تأكيد وحفظ</button>
+		</form>
+	</div>
 {% endblock %}

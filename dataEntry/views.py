@@ -11,7 +11,7 @@ from clientManager.forms import *
 
 
 
-class clientUpdateView(CreateView):
+class clientCreateView(CreateView):
     model = Client
     form_class = ClientForm
     template_name = 'dataEntry/client_form.html'
