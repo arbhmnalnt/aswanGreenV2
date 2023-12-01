@@ -36,7 +36,8 @@ class Client(TimeStampMixin,models.Model):
 class Contract(TimeStampMixin,models.Model):
     clientt          = models.ForeignKey('Client', related_name='client', on_delete=models.CASCADE,null=True, blank=True,db_index=True, verbose_name="العميل")
     servicee         = models.ForeignKey('Service', related_name='service', on_delete=models.CASCADE,null=True, blank=True, verbose_name="الخدمة")
-    notes           = models.TextField(max_length=250,null=True, blank=True, verbose_name="ملاحظات")
+    contractDate     = models.DateField(null=True, blank=True, verbose_name="تاريخ  التعاقد")
+    notes            = models.TextField(max_length=250,null=True, blank=True, verbose_name="ملاحظات")
 
     def __str__(self):
         return str(self.pk)
@@ -56,8 +57,3 @@ class FollowContractServices(TimeStampMixin,models.Model):
     collcetStatus        = models.CharField(max_length=5,null=True, blank=True, db_index=True, choices=COLLECT_STATUS, default = 'wecd', verbose_name="حالة التحصيل")
     deservedAmount       = models.IntegerField(null=True, blank=True, verbose_name="المبلغ المطلوب تحصيله")
     notes                = models.CharField(max_length=100,null=True, blank=True, verbose_name="ملاحظات")
-
-
-
-
-

@@ -1,16 +1,19 @@
 {% extends "DataEntry/index.html" %}
+
+
 {% load crispy_forms_tags %}
 
+
 {% block title %}
-<title>اضافة / تعديل سجل عميل</title>
+<title>اضافة / تعديل سجل تعاقد عميل</title>
 {% endblock %}
 {% block content %}
 	<div class"container text-center m-auto">
 		
 		<form method="post" class="p-3 m-3" enctype="multipart/form-data">
 			{% csrf_token %}
-			<div class="border p-3 m-3">
-				<h2 class="border border-info p-3">بيانات العميل</h2>
+			<div class="border p-5 m-5">
+				<h2 class="border border-primary p-3">بيانات التعاقد</h2>
 				{{ form|crispy }}
 				<hr>
 			</div>

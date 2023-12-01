@@ -1,5 +1,8 @@
 from django import forms
 from .models import Client, Contract, FollowContractServices
+from bootstrap_datepicker_plus.widgets import DatePickerInput
+
+
 
 class ClientForm(forms.ModelForm):
     class Meta:
@@ -14,7 +17,11 @@ class ClientForm(forms.ModelForm):
 class ContractForm(forms.ModelForm):
     class Meta:
         model = Contract
-        fields = ['clientt', 'servicee', 'notes']
+        fields =  ['clientt', 'servicee', 'contractDate','notes']
+        widgets = {
+            'contractDate': DatePickerInput(),
+        }
+
 
 class FollowContractServicesForm(forms.ModelForm):
     class Meta:

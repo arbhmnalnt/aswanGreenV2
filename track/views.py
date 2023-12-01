@@ -13,6 +13,7 @@ class TrackListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        queryset = queryset.order_by('-created_at')
         search_query = self.request.GET.get('q')
         if search_query:
             queryset = queryset.filter(

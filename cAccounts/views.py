@@ -34,25 +34,6 @@ def logout(request):
 import datetime
 @csrf_exempt
 def login(request):
-    # def makeContractFollow():
-    #     contracts = Contract.objects.all()
-    #     for con in contracts:
-    #         print(f'con => ${con.id}')
-    #         deserv = con.servicee.price
-    #         date_object = datetime.datetime.fromisoformat('2023-11-13')
-    #         datee = date_object.date()
-
-    #         newFollowContractServices =  FollowContractServices.objects.create(
-    #             clientt         = con.clientt ,
-    #             contractt       = con ,
-    #             ecd             = datee ,
-    #             deservedAmount  = deserv
-
-    #         )
-
-    #         newFollowContractServices.save()
-    # makeContractFollow()
-    # 3333333333333333333333333333
     message = ''
     if request.method == 'POST':
         data2 = request.POST
@@ -61,8 +42,6 @@ def login(request):
         user = authenticate(username=username,password=password)
         if user is not None:
             auth_login(request, user)
-            first_name = request.user.first_name
-            print(f'user firs name => ', first_name)
             return redirect('/cAccounts/profile')
             # message = f'Hello {user.username}! You have been logged in'
         else:
@@ -78,20 +57,20 @@ def profile(request):
     request.session.setdefault('group', False)
     print(f"user groups => {user.groups.all()}")
 
-    if user.groups.filter(name="dataEntryAdmin"):
-        depart = "تسجيل الدخول كمدخل بيانات"
+    if user.groups.filter(name="dataEntry_admin"):
+        depart = "تسجيل الدخول كمسؤول إدخال بيانات"
         person = f"{user.first_name} {user.last_name}"
         details = "تم تسجيل الدخول"
         addTrack(depart, person, details)
-        request.session['group'] = "dataEntryAdmin"
-        return redirect('/DataEntry/')
+        request.session['group'] = "dataEntry_admin"
+        return redirect('/dataEntry/')
 
-    elif user.groups.filter(name="allAdmin"):
-        depart = "تسجيل الدخول كمطور"
+    elif user.groups.filter(name="admin_all"):
+        depart = "تسجيل الدخول كمطور أو مسئول عام"
         person = f"{user.first_name} {user.last_name}"
         details = "تم تسجيل الدخول"
         addTrack(depart, person, details)
-        request.session['group'] = "allAdmin"
+        request.session['group'] = "admin_all"
         return redirect('/track/TrackListView')
 
     elif user.groups.filter(name="tahsealAdmin"):

@@ -3,6 +3,8 @@
 <head>
 	<!-- Add additional CSS in static file -->
   {% load static %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  {{ form.media }}
   {% block title %}{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css" integrity="sha512-0nkKORjFgcyxv3HbE4rzFUlENUMNqic/EzDIeYCgsKa/nwqr2B91Vu/tNAu4Q0cBuG4Xe/D1f/freEci/7GDRA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.27/sweetalert2.all.js"></script>
   <link rel="stylesheet" href="<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.7.27/sweetalert2.css" integrity="sha512-eRBMRR/qeSlGYAb6a7UVwNFgXHRXa62u20w4veTi9suM2AkgkJpjcU5J8UVcoRCw0MS096e3n716Qe9Bf14EyQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
+  <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}">
   <style>
     .btn-custom{
       /*background-color:#6c757d00 !important;*/
@@ -50,11 +53,11 @@
 	    </div>
     	<div class="row" style="height:89vh">
     	    <div class="col-2 pt-5 text-white" style="background-color:#30393D">
-                <a href="{% url 'dataEnrty:list' %}" class="">
+                <a href="{% url 'dataEntry:list' %}" class="">
                     <button class="btn btn-secondary w-100 m-2  btn-custom">سجل العملاء</button>
                 </a>
 
-                <a href="{% url 'dataEnrty:list' %}" class="">
+                <a href="{% url 'dataEntry:create' %}" class="">
                     <button class="btn btn-secondary w-100 m-2  btn-custom">اضافة عميل جديد</button>
                 </a>
     	    </div>
