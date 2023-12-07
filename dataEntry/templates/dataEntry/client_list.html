@@ -17,7 +17,7 @@
             <form method="get">
                 <div class="input-group mb-3">
                     <input type="text" name="search" class="form-control" placeholder="ابحث بالاسم او السريال او المنطقة" aria-label="Recipient's Name" aria-describedby="button-addon2">
-                    <button class="btn btn-info" type="submit">ابحث</button>
+                    <button class="btn btn-primary" type="submit">ابحث</button>
                 </div>
             </form>
             <p class="bg-light p-1 m-1 h6">
@@ -29,6 +29,7 @@
                         <th>السريال</th>
                         <th>الاسم</th>
                         <th>المنطقة</th>
+                        <th>تعديل البيانات</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,9 @@
                             <td>{{ client.serial }}</td>
                             <td>{{ client.name }}</td>
                             <td>{{ client.place.name }}</td>
+                            <td>
+                                <a class="btn btn-info" href="#">تعديل البيانات أو التعاقد</a>
+                            </td>
                         </tr>
 
                     {% empty %}
