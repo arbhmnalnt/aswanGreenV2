@@ -39,7 +39,8 @@
                             <td>{{ client.name }}</td>
                             <td>{{ client.place.name }}</td>
                             <td>
-                                <a class="btn btn-info" href="#">تعديل البيانات أو التعاقد</a>
+                                <a class="btn btn-info" href="{% url 'dataEntry:update' pk=client.id %}">تعديل البيانات أو التعاقد</a>
+
                             </td>
                         </tr>
 

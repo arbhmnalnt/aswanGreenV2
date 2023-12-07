@@ -14,6 +14,13 @@ from track.views import addTrack
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 import sys
+class contractUpdateView(UpdateView):
+    model = Contract
+    form_class = ContractForm
+    template_name = 'dataEntry/contract_form.html'
+    
+    def get_success_url(self):
+        return reverse('dataEntry:list')
 
 class contractCreateView(CreateView):
     model = Contract
@@ -61,6 +68,16 @@ class contractCreateView(CreateView):
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
     
+
+class clientUpdateView(UpdateView):
+    model = Client
+    form_class = ClientForm
+    template_name = 'dataEntry/client_form.html'
+    
+    def get_success_url(self):
+        updated_client_id = self.object.id  # Get the newly created client object
+        contract = Contract.objects.get(clientt__id=updated_client_id)
+        return reverse('dataEntry:update_contract', kwargs={'pk': contract.pk})
 
 class clientCreateView(CreateView):
     model = Client

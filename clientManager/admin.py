@@ -14,12 +14,12 @@ admin.site.register(Area, AreaAdmin)
 
 
 class ClientAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    search_fields = ['name', 'serial']
+    search_fields = ['name', 'serial', 'id']
     list_display = ('id','serial','name','phone','place','created_at')
 admin.site.register(Client, ClientAdmin)
 
 class ContractAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    search_fields = ['clientt__name', 'clientt__serial']
+    search_fields = ['clientt__name', 'clientt__serial', 'clientt__id']
     list_display = ('id','clientt','get_client_serial','created_at')
     def get_client_serial(self, obj):
         return obj.clientt.serial if obj.clientt else None
