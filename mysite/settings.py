@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'hr',
     'clientManager',
     'dataEntry',
+    'collect'
 ]
 
 # SIMPLE_PAGINATION_PER_PAGE = 5

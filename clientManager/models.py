@@ -51,8 +51,8 @@ class FollowContractServices(TimeStampMixin,models.Model):
         ('lp', 'متأخر الدفع')                  # late payment
     )
 
-    clientt               = models.ForeignKey('Client', related_name='fclient', on_delete=models.CASCADE,null=True, blank=True, db_index=True, verbose_name="العميل")
-    contractt               = models.ForeignKey('Contract', related_name='fcontract', on_delete=models.CASCADE,null=True, blank=True, db_index=True, verbose_name="التعاقد")
+    clientt              = models.ForeignKey('Client', related_name='fclient', on_delete=models.CASCADE,null=True, blank=True, db_index=True, verbose_name="العميل")
+    contractt            = models.ForeignKey('Contract', related_name='fcontract', on_delete=models.CASCADE,null=True, blank=True, db_index=True, verbose_name="التعاقد")
     ecd                  = models.DateField(null=True, blank=True, verbose_name="تاريخ  التحصيل المفترض")        # Estimated collection date
     collcetStatus        = models.CharField(max_length=5,null=True, blank=True, db_index=True, choices=COLLECT_STATUS, default = 'wecd', verbose_name="حالة التحصيل")
     deservedAmount       = models.IntegerField(null=True, blank=True, verbose_name="المبلغ المطلوب تحصيله")

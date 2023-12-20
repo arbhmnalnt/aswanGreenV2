@@ -73,14 +73,14 @@ def profile(request):
         request.session['group'] = "admin_all"
         return redirect('/track/TrackListView')
 
-    elif user.groups.filter(name="tahsealAdmin"):
+    elif user.groups.filter(name="tahseal_admin"):
         depart = "تسجيل الدخول كمسوؤل تحصيل"
         person = f"{user.first_name} {user.last_name}"
         details = "تم تسجيل الدخول"
         addTrack(depart, person, details)
-        request.session['group'] = "tahsealAdmin"
+        request.session['group'] = "tahseal_admin"
         # print("admin here => ")
-        return redirect('/DataEntry/TcurrentCollectOrder/')
+        return redirect('/collect/clientList/')
 
     elif user.groups.filter(name="customerService"):
         depart = "تسجيل الدخول كمسئول خدمة عملاء"

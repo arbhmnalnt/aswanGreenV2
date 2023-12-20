@@ -53,13 +53,36 @@
 	    </div>
     	<div class="row" style="height:89vh">
     	    <div class="col-2 pt-5 text-white" style="background-color:#30393D">
-                <a href="{% url 'dataEntry:list' %}" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">سجل العملاء</button>
-                </a>
-
-                <a href="{% url 'dataEntry:create' %}" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">اضافة عميل جديد</button>
-                </a>
+                {% if request.session.group == "tahseal_admin" %}
+                    <a href="#" class="">
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">ملخص / نبذه</button>
+                    </a>
+                    <a href="{% url 'dataEntry:list' %}" class="">    
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">سجل العملاء</button>
+                    </a>
+                    <a href="#" class="">
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">انشاء طلب تحصيل جديد</button>
+                    </a>
+                    <a href="#" class="">
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">ادارة تحصيل العملاء</button>
+                    </a>
+                    <a href="#" class="">
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">متابعة طلبات التحصيل الجارية</button>
+                    </a>
+                    <a href="#" class="">
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">سجل المحصلين</button>
+                    </a>
+                    <a href="#" class="">
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">ما تم تحصيله</button>
+                    </a>
+                {% elif request.session.group == "dataEntry_admin" %}
+                    <a href="{% url 'dataEntry:list' %}" class="">    
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">سجل العملاء</button>
+                    </a>
+                    <a href="{% url 'dataEntry:create' %}" class="">
+                        <button class="btn btn-secondary w-100 m-2  btn-custom">اضافة عميل جديد</button>
+                    </a>
+                {% endif %}
     	    </div>
     	    <div class="col-10">
                 {% block content %}{% endblock %}

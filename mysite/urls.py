@@ -26,6 +26,8 @@ urlpatterns = [
     path('hr/', include('hr.urls')),
     path('clientManager/', include('clientManager.urls')),
     path('dataEntry/', include('dataEntry.urls')),
+    path('DataEntry/', include('dataEntry.urls')),
+    path('collect/', include('collect.urls')),
     
     
 ]
