@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from clientManager.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
@@ -22,6 +22,14 @@ def get_ecd(input_date):
     
     return new_date
 
+def create_follow_contract_services(client, contract, ecd, deserved_amount):
+        FollowContractServices.objects.create(
+            clientt=client,
+            contractt=contract,
+            ecd=ecd,
+            deservedAmount=deserved_amount
+        )
+
 # =============   END  FUNNCTIONS PART ===============
 
 class contractUpdateView(UpdateView):
@@ -36,7 +44,11 @@ class contractCreateView(CreateView):
     model = Contract
     form_class = ContractForm
     template_name = 'dataEntry/contract_form.html'
+    success_url = reverse_lazy('dataEntry:list')
 
+    # def get_success_url(self):
+    #     return reverse('dataEntry:list')
+    
     def get(self, request, *args, **kwargs):
         # Extract user information from the request
         if request.session['group'] == "dataEntry_admin":
@@ -56,25 +68,18 @@ class contractCreateView(CreateView):
         kwargs['initial'] = {'clientt':client_record.pk}
         return kwargs
     
-    def form_valid(self, form):
-        if self.object:
-            print(f"Object is not None. Object type: {type(self.object)}, Object ID: {self.object.id}")
-            contract_id     = self.object.pk
-            client_id       = self.object.clientt_id 
-            contractDate    = self.object.contractDate
-            ecd           = get_ecd(contractDate)
-            deserved_amount = Service.objects.get(pk=self.object.servicee_id).price
-            FollowContractServices.objects.create(
-                clientt         =   client_id,
-                contract        =   contract_id,
-                contractDate    =   contractDate,
-                ecd             =   ecd,
-                deserved_amount =   deserved_amount
-            )
-        else:
-            print("Object is None. Form was not saved correctly.")
-        return HttpResponseRedirect(reverse('dataEntry:list'))
     
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        contract = self.object  # Assign the Contract instance to a variable
+        clientt = form.cleaned_data['clientt']
+        contractDate = contract.contractDate  # Use contract variable
+        ecd = get_ecd(contractDate)
+        deserved_amount = Service.objects.get(pk=contract.servicee_id).price
+        create_follow_contract_services(clientt, contract, ecd, deserved_amount)
+        return HttpResponseRedirect(reverse('dataEntry:list'))
+
     def form_invalid(self, form):
         return self.render_to_response(self.get_context_data(form=form))
     
