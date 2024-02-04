@@ -85,7 +85,7 @@ class contractCreateView(CreateView):
     
 
 class clientUpdateView(UpdateView):
-    print("f here=>>>>>>>>>>>>>>>>>>>")
+    #print("f here=>>>>>>>>>>>>>>>>>>>")
     model = Client
     form_class = ClientForm
     template_name = 'dataEntry/client_form.html'
