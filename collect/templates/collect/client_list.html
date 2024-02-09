@@ -1,0 +1,58 @@
+{% extends "collect/index.html" %}    
+{% load static %}
+
+{% block title %}
+    <title>سجل العملاء</title>
+{% endblock %}
+
+{% block style %}
+    <!-- Your styles go here -->
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-10 m-auto">
+            <form method="get">
+                <div class="input-group mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="ابحث بالاسم او السريال او المنطقة" aria-label="Recipient's Name" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="submit">ابحث</button>
+                </div>
+            </form>
+            <p class="bg-light p-1 m-1 h6">
+                عدد العملاء : <span class="d-inline-block text-primary">{{total_count}}</span>
+            </p>
+            <table class="table table-bordered table-sm text-center table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>السريال</th>
+                        <th>الاسم</th>
+                        <th>المنطقة</th>
+                        <th>طلب تعديل البيانات</th>
+                        <th>تاريخ التحصيل التالى<th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.serial }}</td>
+                            <td>{{ client.name }}</td>
+                            <td>{{ client.place.name }}</td>
+                            <td>
+                                <a class="btn btn-info" href="{% url 'dataEntry:update' pk=client.id %}">طلب تعديل البيانات أو التعاقد</a>
+                            </td>
+                            <td>
+                                تاريخ التحصيل التالى
+                            </td>
+                        </tr>
+
+                    {% empty %}
+                        <li>No client found.</li>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

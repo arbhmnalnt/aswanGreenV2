@@ -1,9 +1,10 @@
 from django.urls import path, include
 from .views import *
-from dataEntry.views import clientListView
 
 app_name = "collect"
 
 urlpatterns = [
     path('clientList/', clientListView.as_view(), name='list'),
+    #path('summary/', summary.as_view(), name='summary'),
+  #  path('new_colect_order/', new_colect_order.as_view(), name='new_colect_order'),
     ]
