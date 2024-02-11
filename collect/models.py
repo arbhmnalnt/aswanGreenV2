@@ -1,11 +1,12 @@
 from django.db import models
 from track.models import TimeStampMixin
-from clientManager.models import Client
+from clientManager.models import *
 from hr.models import Employee
 
 # Create your models here.
 class CollectRequest(TimeStampMixin,models.Model):
-    clientt         = models.ManyToManyField(Client) 
+    name            = models.CharField(max_length=100,null=True, blank=True, verbose_name="تحصيل شهر ")
+    clientt         = models.ManyToManyField(FollowContractServices, verbose_name="متابعات التحصيل") 
     collector       = models.ForeignKey(Employee,  on_delete=models.CASCADE ,verbose_name="المحصل")
     daftr_serial    = models.CharField(max_length=14,null=True, blank=True, verbose_name="سريال دفتر التحصيل")
 

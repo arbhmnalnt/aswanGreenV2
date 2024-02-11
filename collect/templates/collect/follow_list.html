@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title>سجل العملاء</title>
+    <title>سجل متابعة تعاقد العملاء</title>
 {% endblock %}
 
 {% block style %}
@@ -34,16 +34,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for client in clients %}
+                    {% for follow in follows %}
                         <tr>
-                            <td>{{ client.serial }}</td>
-                            <td>{{ client.name }}</td>
-                            <td>{{ client.place.name }}</td>
+                            <td>{{ follow.clientt.serial }}</td>
+                            <td>{{ follow.clientt.name }}</td>
+                            <td>{{ follow.clientt.place.name }}</td>
                             <td>
-                                <a class="btn btn-info" href="{% url 'dataEntry:update' pk=client.id %}">طلب تعديل البيانات أو التعاقد</a>
+                                <a class="btn btn-info" href="#">طلب تعديل البيانات أو التعاقد</a>
                             </td>
                             <td>
-                                تاريخ التحصيل التالى
+                                {{follow.ecd|date:"Y-m-d"}}
                             </td>
                         </tr>
 

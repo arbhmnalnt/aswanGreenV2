@@ -14,11 +14,11 @@ import sys
 
 #class new_colect_order(LoginRequiredMixin, CreateView):
 
-class clientListView(LoginRequiredMixin, ListView):
-    queryset = Client.objects.all()
-    model = Client
-    template_name = 'collect/client_list.html'
-    context_object_name = 'clients'
+class followsListView(LoginRequiredMixin, ListView):
+    queryset = FollowContractServices.objects.all()
+    model = FollowContractServices
+    template_name = 'collect/follow_list.html'
+    context_object_name = 'follows'
     # tracking
     def get(self, request, *args, **kwargs):
         # Extract user information from the request
@@ -30,7 +30,7 @@ class clientListView(LoginRequiredMixin, ListView):
             depart  =   "مسئول التحصيل"
 
         person = request.user.first_name + " " + request.user.last_name
-        details = "عرض قائمة سجل العملاء"
+        details = "عرض قائمة سجل متابعة التعاقدات"
         addTrack(depart, person, details)
         return super().get(request, *args, **kwargs)
     
@@ -40,14 +40,14 @@ class clientListView(LoginRequiredMixin, ListView):
         search_term = self.request.GET.get('search', '')
 
         if search_term:
-            clients = Client.objects.filter(
-                Q(name__icontains=search_term) |
-                Q(serial__icontains=search_term) |
-                Q(place__name__icontains=search_term)
+            follows = FollowContractServices.objects.filter(
+                Q(clientt_name__icontains=search_term) |
+                Q(clientt_serial__icontains=search_term) |
+                Q(clientt_place__name__icontains=search_term)
             ).order_by('-created_at')
         else:
-            clients = Client.objects.all().order_by('-created_at')
-        context['clients'] = clients
-        context['total_count'] = clients.count()  # Use 'total_count' instead of 'totalCount'
+            follows = FollowContractServices.objects.all().order_by('-created_at')
+        context['follows'] = follows
+        context['total_count'] = follows.count()  # Use 'total_count' instead of 'totalCount'
 
         return context
