@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{% static 'cAccounts/css/bootstrap.min.css' %}"/>
   <link rel="stylesheet" href="{% static 'cAccounts/css/chosen.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'cAccounts/css/chosen-sprite.png' %}" />
   <link rel="stylesheet" href="{% static 'cAccounts/css/style.css' %}" />
   <script src="{% static 'cAccounts/js/jquery.min.js' %}"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'admin/css/widgets.css' %}">
@@ -53,8 +54,8 @@
                 <a href="{% url 'dataEntry:list' %}" class="">    
                     <button class="btn btn-secondary w-100 m-2  btn-custom">سجل العملاء</button>
                 </a>
-                <a href="#" class="">
-                    <button class="btn btn-secondary w-100 m-2  btn-custom">انشاء طلب تحصيل جديد</button>
+                <a href="{% url 'collect:new_colect_order' %}" class="">
+                    <button class="btn btn-secondary w-100 m-2  btn-custom" >انشاء طلب تحصيل جديد</button>
                 </a>
                 <a href="#" class="">
                     <button class="btn btn-secondary w-100 m-2  btn-custom">ادارة تحصيل العملاء</button>
@@ -81,8 +82,11 @@
     <script src="{% static 'cAccounts/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'cAccounts/js/htmx.js' %}"></script>
     <script src="{% static 'cAccounts/js/chosen.js'%}"></script>
-    {% block script %}
-    {% endblock %}
+    <script>
+        {% block script %}
+        {% endblock %}
+    </script>
+
     <script>
 </script>
 </body>

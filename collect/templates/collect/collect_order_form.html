@@ -1,0 +1,82 @@
+{% extends "collect/index.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>اضافة / تعديل سجل تحصيل</title>
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid text-center m-auto">
+    <h1 class="h1 border p-3 mb-5 mt-3">{% if form.instance.pk %}تعديل{% else %} انشاء {% endif %} سجل تحصيل  {{cloth.name}}</h1>
+    <div class="row">
+        <div class="col-4 mb-5 border border-danger p-4">
+            <form method="post">
+                    {% csrf_token %}
+                    {{ form | crispy}}
+                <button type="submit" class="btn btn-danger text-white d-block w-100 h3 mt-3">حفظ</button>
+            </form>
+        </div>
+        <div class="col-7 border p-3">
+            <div class="row selectAllToggle mb-5">
+                <div class="col-6">
+                    <button class="btn btn-primary w-100 chosen-toggle select-all">تحديد الكل</button>
+                </div>
+                <div class="col-4 mr-auto">
+                    <button class="btn btn-info text-white w-100 chosen-toggle deselect-all">الغاء تحديد الكل</button>
+                </div>
+            </div>
+            <h2>سجل التحصيلات</h2>
+            <table class="table-bordered text-center w-100 h6">
+                <thead>
+                    <tr>
+                        <th>اسم التحصيل</th>
+                        <th>المحصل</th>
+                        <th>سريال الدفتر</th>
+                        <th>تاريخ اصدار التحصيل</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>4</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+        $("#id_clientt").chosen({rtl: true, height:'10rem'});
+
+        $('#id_clientt_chosen ul.chosen-choices').css({
+            height      :   "10rem",
+            overflow    :   "scroll"
+        });
+
+        
+
+        $('.select-all').click(function() {
+            $("#id_clientt option").prop("selected", true);
+            // Trigger Chosen update only once after all changes
+            $('#id_clientt').trigger('chosen:updated');
+        });
+
+        $("#id_clientt option").prop("selected", true);
+            // Trigger Chosen update only once after all changes
+            $('#id_clientt').trigger('chosen:updated');
+        
+        $('.deselect-all').click(function() {
+            $("#id_clientt option").prop("selected", false);
+            // Trigger Chosen update only once after all changes
+            $('#id_clientt').trigger('chosen:updated');
+        });
+{% endblock %}

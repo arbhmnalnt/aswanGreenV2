@@ -20,17 +20,59 @@
                     <button class="btn btn-primary" type="submit">ابحث</button>
                 </div>
             </form>
-            <p class="bg-light p-1 m-1 h6">
-                عدد العملاء : <span class="d-inline-block text-primary">{{total_count}}</span>
+            <p class="bg-light text-right d-inline-block p-3 m-1 h6">
+                عدد العملاء : <span class="text-primary">{{total_count}}</span>
             </p>
-            <table class="table table-bordered table-sm text-center table-hover table-striped">
+            <button class="btn btn-danger w-50 h3"  data-toggle="modal" data-target="#newCollectOrderModel" style="margin-right:10rem">انشاء طلب تحصيل</button>    
+            
+        </div>
+        <div class="modal fade" id="newCollectOrderModel" tabindex="-1" role="dialog" aria-labelledby="newCollectOrderModelTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">تفاصيل طلب التحصيل</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>اختار المحصل</label>
+                            <select class="select form-control" name="collector">
+                                {% for collector in collectors %}
+                                <option value="collector.id">{{collector.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>تاريخ بدء التحصيل</label>
+                            <input type="date" class="form-control" name="collectStartDate">
+                        </div>
+                        <div class="form-group">
+                            <label>سريال دفتر التحصيل</label>
+                            <input type="" class="form-control" name="daftrSerial">
+                        </div>
+                        
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary ml-2 collect-btn">تأكيد وحفظ</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10"  style="position: fixed; top: 16rem; display: inline-block; left: 0rem; z-index:2; overflow:scroll; height:67vh">
+            <table class="table table-bordered table-sm text-center table-hover table-striped" >
                 <thead>
                     <tr>
                         <th>السريال</th>
                         <th>الاسم</th>
                         <th>المنطقة</th>
                         <th>طلب تعديل البيانات</th>
-                        <th>تاريخ التحصيل التالى<th>
+                        <th>تاريخ التحصيل التالى</th>
+                        <th>اضافة لطلب التحصيل</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -45,6 +87,11 @@
                             <td>
                                 {{follow.ecd|date:"Y-m-d"}}
                             </td>
+
+                            <td>
+                                <input type="checkbox" class="client-checkbox form-control" style=" height: 2rem; " checked value="{{follow.id}}">
+                                <input type="hidden" value={{follow.id}}>
+                            </td>
                         </tr>
 
                     {% empty %}
@@ -55,4 +102,30 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+    // Collect selected clients and send to backend
+    $('.collect-btn').click(function() {
+        var selectedClients = [];
+        $('.client-checkbox:checked').each(function() {
+            selectedClients.push($(this).next().val());
+        });
+        console.log("selectedClients=> ", selectedClients)
+
+        // Send selected clients to backend using API
+        $.ajax({
+            url: '/api/new_colect_order/',
+            method: 'POST',
+            data: {
+                'clients': selectedClients
+            },
+            success: function(response) {
+                // Handle success response
+            },
+            error: function(error) {
+                // Handle error response
+            }
+        });
+    });
 {% endblock %}

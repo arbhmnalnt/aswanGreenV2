@@ -8,7 +8,8 @@ class CollectRequest(TimeStampMixin,models.Model):
     name            = models.CharField(max_length=100,null=True, blank=True, verbose_name="تحصيل شهر ")
     clientt         = models.ManyToManyField(FollowContractServices, verbose_name="متابعات التحصيل") 
     collector       = models.ForeignKey(Employee,  on_delete=models.CASCADE ,verbose_name="المحصل")
-    daftr_serial    = models.CharField(max_length=14,null=True, blank=True, verbose_name="سريال دفتر التحصيل")
+    daftrSerial     = models.CharField(max_length=14,null=True, blank=True, verbose_name="سريال دفتر التحصيل")
+    startDate       = models.DateTimeField(null=True, blank=True, verbose_name="تاريخ بدء التحصيل")
 
     def __str__(self):
         return self.name 

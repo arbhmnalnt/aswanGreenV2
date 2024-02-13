@@ -11,8 +11,13 @@ from datetime import date, datetime
 from track.views import addTrack
 from django.contrib.auth.mixins import LoginRequiredMixin
 import sys
+from .forms import *
 
-#class new_colect_order(LoginRequiredMixin, CreateView):
+class new_colect_order(LoginRequiredMixin, CreateView):
+    form_class      =   CollectRequestForm
+    template_name   =   'collect/collect_order_form.html'
+    success_url     = 'collect:list'
+
 
 class followsListView(LoginRequiredMixin, ListView):
     queryset = FollowContractServices.objects.all()
@@ -41,13 +46,14 @@ class followsListView(LoginRequiredMixin, ListView):
 
         if search_term:
             follows = FollowContractServices.objects.filter(
-                Q(clientt_name__icontains=search_term) |
-                Q(clientt_serial__icontains=search_term) |
-                Q(clientt_place__name__icontains=search_term)
+                Q(clientt__name__icontains=search_term) |
+                Q(clientt__serial__icontains=search_term) |
+                Q(clientt__place__name__icontains=search_term)
             ).order_by('-created_at')
         else:
-            follows = FollowContractServices.objects.all().order_by('-created_at')
-        context['follows'] = follows
+            follows = FollowContractServices.objects.all()
+        context['collectors'] = Employee.objects.all()
+        context['follows'] = follows.order_by('clientt__name')
         context['total_count'] = follows.count()  # Use 'total_count' instead of 'totalCount'
 
         return context
