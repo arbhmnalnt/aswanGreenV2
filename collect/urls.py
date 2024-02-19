@@ -6,5 +6,5 @@ app_name = "collect"
 urlpatterns = [
     path('clientList/', followsListView.as_view(), name='list'),
     #path('summary/', summary.as_view(), name='summary'),
-   path('new_colect_order/', new_colect_order.as_view(), name='new_colect_order'),
+   path('new_colect_order/', new_colect_order),
     ]
