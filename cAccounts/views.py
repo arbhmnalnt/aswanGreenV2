@@ -80,7 +80,7 @@ def profile(request):
         addTrack(depart, person, details)
         request.session['group'] = "tahseal_admin"
         # print("admin here => ")
-        return redirect('/collect/clientList/')
+        return redirect('/collect/followList/')
 
     elif user.groups.filter(name="customerService"):
         depart = "تسجيل الدخول كمسئول خدمة عملاء"

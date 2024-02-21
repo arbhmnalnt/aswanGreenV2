@@ -4,7 +4,7 @@ from .views import *
 app_name = "collect"
 
 urlpatterns = [
-    path('clientList/', followsListView.as_view(), name='list'),
+    path('followList/', followsListView.as_view(), name='list'),
     #path('summary/', summary.as_view(), name='summary'),
-   path('new_colect_order/', new_colect_order),
+    path('api/new_colect_order/', NewCollectOrderAPI.as_view()),
     ]

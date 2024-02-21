@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse
 from clientManager.models import *
@@ -12,11 +12,47 @@ from track.views import addTrack
 from django.contrib.auth.mixins import LoginRequiredMixin
 import sys
 from .forms import *
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+import json
+from django.db import transaction
 
-class new_colect_order(LoginRequiredMixin, CreateView):
-    form_class      =   CollectRequestForm
-    template_name   =   'collect/collect_order_form.html'
-    success_url     = 'collect:list'
+
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class NewCollectOrderAPI(ListView):
+    def post(self, request):
+        data = json.loads(request.body.decode('utf-8'))
+        selected_clients = data.get('clients', [])
+        print(f"selected_clients => {type(selected_clients)}")
+        serial = data.get('serial')
+        start_collect_date = data.get('startCollectDate')
+        collector_id = data.get('collectorId')
+
+        # Validate data (add necessary validation based on your requirements)
+        # ...
+
+        # Create CollectOrder and update related objects
+        with transaction.atomic():
+            collect_request = CollectRequest.objects.create(
+                daftrSerial=serial,
+                startDate=start_collect_date,
+                collector=Employee.objects.get(pk=collector_id),
+            )
+            selected_clients_chunks = [selected_clients[i:i+100] for i in range(0, len(selected_clients), 100)]
+            for chunk in selected_clients_chunks:
+                # Assuming selected_clients are client IDs
+                clients = Client.objects.filter(pk__in=chunk)
+                collect_request.clientt.add(*clients)
+
+        # Handle success response
+        response_content = "Collect order created successfully"
+        response = HttpResponse(response_content, content_type='text/plain')
+        return response
+
 
 
 class followsListView(LoginRequiredMixin, ListView):

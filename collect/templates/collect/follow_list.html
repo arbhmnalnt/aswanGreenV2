@@ -38,19 +38,19 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>اختار المحصل</label>
-                            <select class="select form-control" name="collector">
+                            <select class="select form-control" name="collector" id="collector">
                                 {% for collector in collectors %}
-                                <option value="collector.id">{{collector.name}}</option>
+                                <option value="{{collector.id}}">{{collector.name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
                         <div class="form-group">
                             <label>تاريخ بدء التحصيل</label>
-                            <input type="date" class="form-control" name="collectStartDate">
+                            <input type="date" class="form-control" name="collectStartDate" id="collectStartDate">
                         </div>
                         <div class="form-group">
                             <label>سريال دفتر التحصيل</label>
-                            <input type="" class="form-control" name="daftrSerial">
+                            <input type="" class="form-control" name="serial" id="serial">
                         </div>
                         
 
@@ -61,6 +61,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-3 mr-auto h3 ">
+            <a class="btn btn-warning w-100 p-2 h3" onclick="cancelCheckAll()">الغاء تحديد الكل</a>
+            <a class="btn btn-success w-100 p-2 text-white" onclick="checkAll()">تحديد الكل</a>
         </div>
         <div class="col-10"  style="position: fixed; top: 16rem; display: inline-block; left: 0rem; z-index:2; overflow:scroll; height:67vh">
             <table class="table table-bordered table-sm text-center table-hover table-striped" >
@@ -90,7 +94,7 @@
 
                             <td>
                                 <input type="checkbox" class="client-checkbox form-control" style=" height: 2rem; " checked value="{{follow.id}}">
-                                <input type="hidden" value={{follow.id}}>
+                                <input type="hidden" value={{follow.clientt.id}}>
                             </td>
                         </tr>
 
@@ -102,12 +106,30 @@
         </div>
     </div>
 </div>
+<input type="hidden" value="{{csrf_token}}" id="csrf_token">
 {% endblock %}
 
 {% block script %}
+    //check all
+
+
+    function checkAll() {
+        console.log("Started");
+        $('.client-checkbox').prop('checked', true); // Check all
+    }
+
+    // cancel check all
+    function cancelCheckAll() {
+        console.log("Started");
+        $('.client-checkbox').prop('checked', false); // Check all
+    }
+
     // Collect selected clients and send to backend
     $('.collect-btn').click(function() {
-        var selectedClients = [];
+        var collector           = $("#collector").val(),
+            startCollectDate    = $("#collectStartDate").val(),
+            serial              = $("#serial").val(),
+            selectedClients     = [];
         $('.client-checkbox:checked').each(function() {
             selectedClients.push($(this).next().val());
         });
@@ -115,11 +137,15 @@
 
         // Send selected clients to backend using API
         $.ajax({
-            url: '/api/new_colect_order/',
+            url: '/collect/api/new_colect_order/',
             method: 'POST',
-            data: {
-                'clients': selectedClients
-            },
+            data: JSON.stringify({
+                'clients'           :   selectedClients,
+                'serial'            :   serial,
+                'startCollectDate'  :   startCollectDate,
+                'collectorId'       :   collector,
+                'csrfmiddlewaretoken':   $("#csrf_token").val(),
+            }),
             success: function(response) {
                 // Handle success response
             },
@@ -128,4 +154,6 @@
             }
         });
     });
+
+    
 {% endblock %}
