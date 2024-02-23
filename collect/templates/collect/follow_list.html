@@ -31,9 +31,10 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">تفاصيل طلب التحصيل</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" id="modal_close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
+                        <p class="btn btn-danger" id="success_new_request"></p>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
@@ -73,7 +74,7 @@
                         <th>السريال</th>
                         <th>الاسم</th>
                         <th>المنطقة</th>
-                        <th>طلب تعديل البيانات</th>
+                        <th>المزيد</th>
                         <th>تاريخ التحصيل التالى</th>
                         <th>اضافة لطلب التحصيل</th>
 
@@ -86,7 +87,7 @@
                             <td>{{ follow.clientt.name }}</td>
                             <td>{{ follow.clientt.place.name }}</td>
                             <td>
-                                <a class="btn btn-info" href="#">طلب تعديل البيانات أو التعاقد</a>
+                                <a class="btn btn-info" href="#">المزيد / اوامر اضافية</a>
                             </td>
                             <td>
                                 {{follow.ecd|date:"Y-m-d"}}
@@ -147,10 +148,12 @@
                 'csrfmiddlewaretoken':   $("#csrf_token").val(),
             }),
             success: function(response) {
-                // Handle success response
+                $("#success_new_request").text("تم انشاء طلب التحصيل بنجاح إغلق النافذة")
+                alert('تم انشاء طلب التحصيل بنجاح إغلق النافذة');
+                
             },
             error: function(error) {
-                // Handle error response
+                $("#success_new_request").text("حدثت مشكلة الرجاء التواصل مع المسؤول")
             }
         });
     });

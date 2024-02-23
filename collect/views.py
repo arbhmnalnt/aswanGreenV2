@@ -5,7 +5,7 @@ from clientManager.models import *
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q, Prefetch
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, UpdateView, CreateView
+from django.views.generic import ListView, UpdateView, CreateView, DetailView
 from clientManager.models import *
 from datetime import date, datetime
 from track.views import addTrack
@@ -20,7 +20,59 @@ import json
 from django.db import transaction
 
 
+class collectRequestDetailView(LoginRequiredMixin, DetailView):
+    model               =   CollectRequest
+    template_name       =   'collect/collectRequest_detail.html'
+    context_object_name =   'request'
 
+    def get_context_data(self, **kwargs):
+        context             = super().get_context_data(**kwargs)
+        collectRequest_id   =   self.kwargs.get('pk')
+        clients             = CollectRequest.objects.get(pk=collectRequest_id).clientt.all()
+        follows             = []
+        total_sum           = 0
+        for cl in clients:
+            follow = FollowContractServices.objects.get(clientt=cl)
+            follows.append(follow)
+            total_sum += follow.deservedAmount
+
+        context['follows'] = follows
+        context['total_count'] = len(follows)
+        context['total_sum'] = total_sum
+
+        return context
+
+class collectRequest(LoginRequiredMixin, ListView):
+    queryset            =   CollectRequest
+    template_name       =   'collect/collectRequest_list.html'
+    context_object_name =   'requests'
+
+    # tracking
+    def get(self, request, *args, **kwargs):
+        # Extract user information from the request
+        if request.session['group'] == "dataEntry_admin":
+            depart = "مسئول ادخال بيانات"
+        elif request.session['group'] == "admin_all":
+            depart = "مطور أو مسئول عام"
+        elif request.session['group'] == "tahseal_admin":
+            depart  =   "مسئول التحصيل"
+
+        person = request.user.first_name + " " + request.user.last_name
+        details = "عرض  سجل متابعة طلبات التحصيل"
+        addTrack(depart, person, details)
+        return super().get(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search_term = self.request.GET.get('search', '')
+
+        if search_term:
+            pass
+        else:
+            requests = CollectRequest.objects.all()
+        context['requests'] = requests
+        context['total_count'] = requests.count()  # Use 'total_count' instead of 'totalCount'
+
+        return context
 
 @method_decorator(csrf_exempt, name='dispatch')
 class NewCollectOrderAPI(ListView):

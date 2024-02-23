@@ -10,6 +10,15 @@ class CollectRequest(TimeStampMixin,models.Model):
     collector       = models.ForeignKey(Employee,  on_delete=models.CASCADE ,verbose_name="المحصل")
     daftrSerial     = models.CharField(max_length=14,null=True, blank=True, verbose_name="سريال دفتر التحصيل")
     startDate       = models.DateTimeField(null=True, blank=True, verbose_name="تاريخ بدء التحصيل")
+    confirmed       = models.BooleanField(null=True, default=False)
+
+    def save(self, *args, **kwargs):
+        if self.startDate:
+            # Extract the month from startDate
+            month = self.startDate.strftime('%m')
+            # Update the name field with the month
+            self.name = f"تحصيل شهر {month}"
+        super().save(*args, **kwargs)
 
     def __str__(self):
         if self.name :

@@ -1,0 +1,70 @@
+{% extends "collect/index.html" %}    
+{% load static %}
+
+{% block title %}
+    <title>تفاصيل طلب التحصيل</title>
+{% endblock %}
+
+{% block style %}
+    .table-bordered td{
+        vertical-align:middle !important;
+    }
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-10 m-auto">
+            <form method="get">
+                <div class="input-group mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="ابحث بإسم المحصل أو اسم التحصيل أو سريال الدفتر" aria-label="Recipient's Name" aria-describedby="button-addon2">
+                    <button class="btn btn-primary" type="submit">ابحث</button>
+                </div>
+            </form>
+            <p class="bg-light text-right d-inline-block p-3 m-1 h6">
+                عدد العملاء : <span class="text-primary">{{total_count}}</span>
+            </p>
+            <p class="bg-light text-right d-inline-block p-3 m-1 h6">
+                إجمالى مبلغ التحصيل : <span class="text-danger">{{total_sum}} جنيه</span>
+            </p>
+            
+        </div>
+        <div class="col-10"  style="position: fixed; top: 10rem; display: inline-block; left: 0rem; z-index:2; overflow:scroll; height:67vh">
+            <button class="btn btn-danger w-50 m-3">تأكيد نهائى</button>
+            <table class="table table-bordered table-sm text-center table-hover table-striped" >
+                <thead>
+                    <tr>
+                        <th>العميل</th>
+                        <th>الخدمة</th>
+                        <th>تاريخ التحصيل المفترض</th>
+                        <th>مبلغ التحصيل</th>
+                        <th>أمر 1</th>
+                        <th>أمر 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for follow in follows %}
+                        
+                        <tr>
+                            <td>{{follow.clientt.name}}</td>
+                            <td>{{follow.contractt.servicee.name}}</td>
+                            <td>{{follow.ecd|date:'Y-m-d'}}</td>
+                            <td>{{follow.contractt.servicee.price}}</td>
+                            <td><a class="btn btn-success" href="#">تأكيد التحصيل</a></td>
+                            <td><a class="btn btn-secondary text-white">اختيارات وأوامر إخرى</a></td>
+                        </tr>
+
+                    {% empty %}
+                        <li>No client found.</li>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="{{csrf_token}}" id="csrf_token">
+{% endblock %}
+
+{% block script %}
+{% endblock %}
